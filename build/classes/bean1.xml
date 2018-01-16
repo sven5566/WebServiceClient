@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="user" class="com.whr.User"></bean>
+	<bean id="myServer" class="com.whr.HelloWorldI"
+		factory-bean="myClient" factory-method="create" />
+	<bean id="myClient" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+		<property name="serviceClass" value="com.whr.HelloWorldI" />
+		<property name="address" value="http://localhost:8089/whr" />
+	</bean>
+</beans>
